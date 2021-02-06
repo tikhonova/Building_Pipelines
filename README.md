@@ -5,7 +5,9 @@ Project involving building an **ETL Pipeline, ML Pipeline** as well as a simple 
 1. Run the following commands in the project's root directory to set up your database and model.
 
     - To run *ETL pipeline* that cleans data and stores in database
-        `python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db`
+        `python process_data.py "messages.csv" "categories.csv" "DisasterResponse.db"'
+		It loads the datasets, fixes the data by resolving quality and tidiness issues, and loads the result into an SQLite database.
+		
     - To run *ML pipeline* that trains classifier and saves
         `python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl`
 

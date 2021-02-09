@@ -37,7 +37,7 @@ def save_data(df, database_filepath):
     ''' save the clean dataset into an sqlite database'''
     from sqlalchemy import create_engine
     engine = create_engine('sqlite:///DisasterResponse.db')
-    df.to_sql(database_filepath, engine, index=False)
+    df.to_sql("master", engine, index=False)
     return database_filepath
 
 

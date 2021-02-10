@@ -23,9 +23,8 @@ def clean_data(df):
     category_colnames = row.apply(lambda x: pd.Series(x[:-2]))
     categories.columns = category_colnames.loc[:,0] #rename the columns of `categories`
     #convert category values to just numbers 0 or 1
-    for column in categories:
-        for value in column:
-            categories[column] = [x.split('-')[-1] for x in categories.iloc[:, 0]]
+    for column in categories.columns:
+        categories[column] = categories[column].apply(lambda x: '1' if '1' in x else 0)
     categories = categories.astype(int)
     # concatenate the original dataframe with the new `categories` dataframe
     df = pd.concat([df.drop('categories', axis=1), categories], axis=1)

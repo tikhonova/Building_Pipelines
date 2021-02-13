@@ -19,7 +19,7 @@ Project involving building an **ETL Pipeline, ML Pipeline** as well as a simple 
 	</br> result = loaded_model.score(X_test, y_test)
 	</br> print(result)
 	
-2. Run the following command in the app's directory to run your web app.
+2. Run the following command in the app's directory to run your web app. Access locally: http://localhost:3001/.
     `python run.py`
 	
 **File Structure**

@@ -23,7 +23,7 @@
 
 1. Set up your database and model: run the following commands to load libraries and set up your database and model.
 
-    1.1. Navigate to the <b>Data folder</b> and run the *process_data.py* script that cleans data and stores in database: <u>`python process_data.py "messages.csv" "categories.csv" "DisasterResponse.db"'</u>
+    1.1. Navigate to the <b>Data folder</b> and run the *process_data.py* script that cleans data and stores in database: <u>`python process_data.py "messages.csv" "categories.csv" "DisasterResponse.db"`</u>
 	The above command loads the datasets, fixes the data by resolving quality and tidiness issues, and loads the result into an SQLite database.
 		
     1.2. <b>Copy .db file into the Models folder</b>, then run the *train_classifier.py* script within the Model folders, which trains classifier and saves it as a pickle file: <u>`python train_classifier.py DisasterResponse.db classifier.pkl`</u>
@@ -61,6 +61,9 @@ Project involving building an ETL Pipeline, ML Pipeline as well as a simple Flas
 
 ### App screenshots
 
-<b>Main page</b>
+#### <b>Main page</b>
 
-<b>Classifying message example -- below is the output for "There's been a storm. We need shelter."</b>
+![Screenshot_1](https://user-images.githubusercontent.com/41370639/107888575-3752d280-6edb-11eb-9de5-f759599b944e.png)
+
+#### <b>Classifying message example -- below is the output for "There's been a storm. We need shelter."</b>
+![Screenshot_2](https://user-images.githubusercontent.com/41370639/107888581-40dc3a80-6edb-11eb-8a80-ed367299f17e.png)

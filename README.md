@@ -1,24 +1,26 @@
 ### Project Description
 </br> 
-*Goals*: 
+<b>Goals</b>: 
 1. Analyze real messages that were sent during disaster events.
 2. Create the best fitting machine learning model and build a pipeline for an API that classifies disaster messages. 
 2. Build a web interface that would allow User to input a new message and get classification results in several categories. The web app will also display visualizations of the training data.
 </br> 
-*Dataset*: imported tables with messages and given categories.
+<b>Dataset</b>: imported tables with messages and given categories.
 </br> 
-*Scripts* : 
+<b>Scripts</b> : 
 * process_data.py that cleans data and stores in database
 * train_classifier.py that trains and saves selected classifier
 * run.py that runs a web app
 </br> 
-*Additional files*:
+<b>Additional files</b>:
 * SQLite database resulting from the first script
 * PKL file resulting from the second script
 * Jupyter Notebooks with exploratory analys and other work done prior to building scripts
 * Templates that help run the web app.
 </br> 
+
 ### Instructions:
+
 1. Set up your database and model: run the following commands in the project's root directory to load libraries and set up your database and model.
 
     1.1. Run the *process_data.py* script that cleans data and stores in database: `python process_data.py "messages.csv" "categories.csv" "DisasterResponse.db"'

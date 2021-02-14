@@ -16,6 +16,8 @@ from flask import Flask
 from flask import render_template, request, jsonify
 from plotly.graph_objs import Bar, Scatter
 from sqlalchemy import create_engine
+import nltk
+nltk.download('stopwords')
 from nltk.corpus import stopwords
 from pandas import DataFrame
 

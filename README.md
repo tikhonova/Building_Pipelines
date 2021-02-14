@@ -21,12 +21,12 @@
 
 ### Instructions:
 
-1. Set up your database and model: run the following commands in the project's root directory to load libraries and set up your database and model.
+1. Set up your database and model: run the following commands to load libraries and set up your database and model.
 
-    1.1. Run the *process_data.py* script that cleans data and stores in database: `python process_data.py "messages.csv" "categories.csv" "DisasterResponse.db"'
+    1.1. Navigate to the Data folder and run the *process_data.py* script that cleans data and stores in database: `python process_data.py "messages.csv" "categories.csv" "DisasterResponse.db"'
 	The above command loads the datasets, fixes the data by resolving quality and tidiness issues, and loads the result into an SQLite database.
 		
-    1.2. Run the *train_classifier.py* script that trains classifier and saves it as a pickle file: `python train_classifier.py DisasterResponse.db classifier.pkl`
+    1.2. Navigate to the Models folder and run the *train_classifier.py* script that trains classifier and saves it as a pickle file: `python train_classifier.py DisasterResponse.db classifier.pkl`
 	The second command builds and saves the model into a .pkl file. 
 	
 	1.3. For additional information, see the *ETL pipeline* and *ML pipeline* jupyter notebooks.
@@ -37,7 +37,7 @@
 	</br> result = loaded_model.score(X_test, y_test)
 	</br> print(result)
 	
-2. Run the following command in the app's directory to run the *Web App*:`python run.py`. Access locally: http://localhost:3001/.
+2. Copy .pkl and .db files into the App folder and run the following command in the app's directory to launch the *Web App*:`python run.py`. Access locally: http://localhost:3001/.
 
 ### Project Structure
 Project involving building an ETL Pipeline, ML Pipeline as well as a simple Flask Web App.

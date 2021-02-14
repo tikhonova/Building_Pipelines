@@ -179,19 +179,19 @@ def build_model2():
 
 """Exporting the final model into a pickle file"""
 def main():
-    X, y = load_data()
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = .3)
-    classifier = ExtraTreesClassifier(36, criterion='gini', max_depth=2, max_features='auto', n_jobs=-1)
+	X, y = load_data()
+	X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = .3)
+	classifier = ExtraTreesClassifier(36)
 
-    model = Pipeline([
-        ('vect', CountVectorizer(tokenizer=tokenize)),
-        ('tfidf', TfidfTransformer()),
-        ('clf', MultiOutputClassifier(classifier, n_jobs=-1))
-        ])
-    model.fit(X_train,y_train)
+	model = Pipeline([
+		('vect', CountVectorizer(tokenizer=tokenize)),
+		('tfidf', TfidfTransformer()),
+		('clf', MultiOutputClassifier(classifier, n_jobs=-1))
+		])
+	model.fit(X_train,y_train)
 
-    filename = 'classifier.pkl'
-    pickle.dump(model, open(filename, 'wb'))
-
+	filename = 'classifier.pkl'
+	pickle.dump(model, open(filename, 'wb'))
+	
 if __name__ == '__main__':
     main()

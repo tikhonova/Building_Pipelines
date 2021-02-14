@@ -21,20 +21,20 @@ nltk.download('stopwords')
 from nltk.corpus import stopwords
 from pandas import DataFrame
 
-
 app = Flask(__name__)
 
-clean_tokens = []
 def tokenize(text):
-    """a tokenization function to process our text data, which is splitting text into words / tokens"""
     tokenizer = RegexpTokenizer(r'[a-zA-Z]{3,}')
     tokens = tokenizer.tokenize(text)
     lemmatizer = WordNetLemmatizer()
+    clean_tokens = []
     for tok in tokens:
         clean_tok = lemmatizer.lemmatize(tok).lower().strip()
         clean_tokens.append(clean_tok)
+
     return clean_tokens
 
+	
 # load data
 engine = create_engine('sqlite:///DisasterResponse.db')
 df = pd.read_sql_table('master', engine)
@@ -62,8 +62,8 @@ def index():
     word_counts = Counter(x for x in clean_tokens if x not in stop_words)
     most_common_words = word_counts.most_common(15)
     df_words = DataFrame(most_common_words, columns=['words', 'counts'])
-
-    # create visuals
+    
+# create visuals
     graphs = [
         {
             'data': [

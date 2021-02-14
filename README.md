@@ -23,10 +23,10 @@
 
 1. Set up your database and model: run the following commands to load libraries and set up your database and model.
 
-    1.1. Navigate to the Data folder and run the *process_data.py* script that cleans data and stores in database: `python process_data.py "messages.csv" "categories.csv" "DisasterResponse.db"'
+    1.1. Navigate to the <b>Data folder</b> and run the *process_data.py* script that cleans data and stores in database: <u>`python process_data.py "messages.csv" "categories.csv" "DisasterResponse.db"'</u>
 	The above command loads the datasets, fixes the data by resolving quality and tidiness issues, and loads the result into an SQLite database.
 		
-    1.2. Navigate to the Models folder and run the *train_classifier.py* script that trains classifier and saves it as a pickle file: `python train_classifier.py DisasterResponse.db classifier.pkl`
+    1.2. <b>Copy .db file into the Models folder</b>, then run the *train_classifier.py* script within the Model folders, which trains classifier and saves it as a pickle file: <u>`python train_classifier.py DisasterResponse.db classifier.pkl`</u>
 	The second command builds and saves the model into a .pkl file. 
 	
 	1.3. For additional information, see the *ETL pipeline* and *ML pipeline* jupyter notebooks.
@@ -37,7 +37,7 @@
 	</br> result = loaded_model.score(X_test, y_test)
 	</br> print(result)
 	
-2. Copy .pkl and .db files into the App folder and run the following command in the app's directory to launch the *Web App*:`python run.py`. Access locally: http://localhost:3001/.
+2. <b>Copy .pkl and .db files into the App folder</b> and run the following command in the app's directory to launch the *Web App*:<u>`python run.py`</u>. Access locally: http://localhost:3001/.
 
 ### Project Structure
 Project involving building an ETL Pipeline, ML Pipeline as well as a simple Flask Web App.
@@ -58,3 +58,11 @@ Project involving building an ETL Pipeline, ML Pipeline as well as a simple Flas
 |- classifier.pkl  # saved model 
 
 - README.md
+
+### App screenshots
+
+<b>Main page</b>
+<img src="../../../../Users/piewitheye/Desktop/Screenshot_9.png" width="612" height="1176" border="0" alt="" />
+
+<b>Classifying message example -- below is the output for "There's been a storm. We need shelter."</b>
+<img src="../../../../Users/piewitheye/Desktop/Screenshot_11.png" width="610" height="1211" border="0" alt="" />

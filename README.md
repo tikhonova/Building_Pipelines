@@ -1,22 +1,22 @@
 ### Project Description
-</br> 
 <b>Goals</b>: 
-1. Analyze real messages that were sent during disaster events.
-2. Create the best fitting machine learning model and build a pipeline for an API that classifies disaster messages. 
-2. Build a web interface that would allow User to input a new message and get classification results in several categories. The web app will also display visualizations of the training data.
-</br> 
-<b>Dataset</b>: imported tables with messages and given categories.
-</br> 
-<b>Scripts</b> : 
-* process_data.py that cleans data and stores in database
-* train_classifier.py that trains and saves selected classifier
-* run.py that runs a web app
+<li>1. Analyze real messages that were sent during disaster events.</li>
+<li>2. Create the best fitting machine learning model and build a pipeline for an API that classifies disaster messages. </li>
+<li>3. Build a web interface that would allow User to input a new message and get classification results in several categories. </li>
+<li>4. Have the web display visualizations of the training data.</li>
+
+</br><b>Dataset</b>: imported tables with messages and given categories.
+
+<b>Scripts</b>: 
+<ul>process_data.py that cleans data and stores in database</ul>
+<ul>train_classifier.py that trains and saves selected classifier</ul>
+<ul>run.py that runs a web app</ul>
 </br> 
 <b>Additional files</b>:
-* SQLite database resulting from the first script
-* PKL file resulting from the second script
-* Jupyter Notebooks with exploratory analys and other work done prior to building scripts
-* Templates that help run the web app.
+<ul>SQLite database resulting from the first script</ul>
+<ul>PKL file resulting from the second script</ul>
+<ul>Jupyter Notebooks with exploratory analys and other work done prior to building scripts</ul>
+<ul>Templates that help run the web app</ul>
 </br> 
 
 ### Instructions:

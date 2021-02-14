@@ -1,9 +1,9 @@
 ### Project Description
 <b>Goals</b>: 
-<li>1. Analyze real messages that were sent during disaster events.</li>
-<li>2. Create the best fitting machine learning model and build a pipeline for an API that classifies disaster messages. </li>
-<li>3. Build a web interface that would allow User to input a new message and get classification results in several categories. </li>
-<li>4. Have the web display visualizations of the training data.</li>
+<ul>1. Analyze real messages that were sent during disaster events.</ul>
+<ul>2. Create the best fitting machine learning model and build a pipeline for an API that classifies disaster messages. </ul>
+<ul>3. Build a web interface that would allow User to input a new message and get classification results in several categories.</ul>
+<ul>4. Have the web display visualizations of the training data.</ul>
 
 </br><b>Dataset</b>: imported tables with messages and given categories.
 
@@ -62,7 +62,5 @@ Project involving building an ETL Pipeline, ML Pipeline as well as a simple Flas
 ### App screenshots
 
 <b>Main page</b>
-<img src="../../../../Users/piewitheye/Desktop/Screenshot_9.png" width="612" height="1176" border="0" alt="" />
 
 <b>Classifying message example -- below is the output for "There's been a storm. We need shelter."</b>
-<img src="../../../../Users/piewitheye/Desktop/Screenshot_11.png" width="610" height="1211" border="0" alt="" />

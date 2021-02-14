@@ -1,37 +1,46 @@
 import json
-import plotly
 import pandas as pd
+import pickle
+import joblib as joblib
+import plotly
+import plotly.express as px
+import collections
+import nltk
+from collections import Counter
 
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
+from nltk.tokenize import RegexpTokenizer
 
 from flask import Flask
 from flask import render_template, request, jsonify
-from plotly.graph_objs import Bar
+from plotly.graph_objs import Bar, Scatter
 from sqlalchemy import create_engine
-import pickle
+from nltk.corpus import stopwords
+from pandas import DataFrame
 
 
 app = Flask(__name__)
 
+clean_tokens = []
 def tokenize(text):
-    tokens = word_tokenize(text)
+    """a tokenization function to process our text data, which is splitting text into words / tokens"""
+    tokenizer = RegexpTokenizer(r'[a-zA-Z]{3,}')
+    tokens = tokenizer.tokenize(text)
     lemmatizer = WordNetLemmatizer()
-
-    clean_tokens = []
     for tok in tokens:
         clean_tok = lemmatizer.lemmatize(tok).lower().strip()
         clean_tokens.append(clean_tok)
-
     return clean_tokens
 
 # load data
 engine = create_engine('sqlite:///DisasterResponse.db')
-df = pd.read_sql('SELECT * FROM master', engine)
+df = pd.read_sql_table('master', engine)
+stop_words = stopwords.words('english')
+clean_tokens = tokenize(df['message'].to_string())
 
 # load model
-filename = 'classifier.pkl'
-model = pickle.load(open(filename, 'rb'))
+model = joblib.load("classifier.pkl")
 
 
 # index webpage displays cool visuals and receives user input text for model
@@ -42,28 +51,97 @@ def index():
     # extract data needed for visuals
     genre_counts = df.groupby('genre').count()['message']
     genre_names = list(genre_counts.index)
-    
+
+    pivoted = pd.melt(df,id_vars = ['id'],value_vars=df.drop(['id','genre','message','original'], axis=1), var_name='category' )
+    pivoted_grouped = pivoted.groupby('category',as_index=False).sum()
+    top15 = pivoted_grouped.sort_values(by='value', ascending=False)[:15]
+    bottom15 = pivoted_grouped.sort_values(by='value', ascending=True)[:15]
+
+    word_counts = Counter(x for x in clean_tokens if x not in stop_words)
+    most_common_words = word_counts.most_common(15)
+    df_words = DataFrame(most_common_words, columns=['words', 'counts'])
+
     # create visuals
-    # TODO: Below is an example - modify to create your own visuals
     graphs = [
         {
             'data': [
-                Bar(
+                Scatter(
                     x=genre_names,
-                    y=genre_counts
+                    y=genre_counts,
+                    opacity=0.5
                 )
             ],
 
             'layout': {
                 'title': 'Distribution of Message Genres',
+                'size': 16,
                 'yaxis': {
-                    'title': "Count"
+                    'title': "Count of Messages"
                 },
                 'xaxis': {
-                    'title': "Genre"
+                    'title': "Genre",
+                        'size': 16,
+                        'color': '#003366'
                 }
             }
-        }
+        },
+
+        {
+            'data': [
+                Bar(
+                    x=top15['category'],
+                    y=top15['value']
+                )
+            ],
+
+            'layout': {
+                'title': '15 Categories with HIGHEST Count of Messages',
+                'yaxis': {
+                    'title': "Count of Messages"
+                },
+                'xaxis': {
+                    'title': "Category"
+                }
+            }
+        },
+
+        {
+            'data': [
+                Bar(
+                    x=bottom15['category'],
+                    y=bottom15['value']
+                )
+            ],
+
+            'layout': {
+                'title': '15 Categories with LOWEST Count of Messages',
+                'yaxis': {
+                    'title': "Count of Messages"
+                },
+                'xaxis': {
+                    'title': "Category"
+                }
+            }
+        },
+        {
+            'data': [
+                Bar(
+                    x=df_words['words'],
+                    y=df_words['counts'],
+                opacity = 0.5
+                )
+            ],
+
+            'layout': {
+                'title': 'Most Common Words Found in Messages',
+                'yaxis': {
+                    'title': "Frequency of Words in Messages"
+                },
+                'xaxis': {
+                    'title': "Words"
+                }
+            }
+        },
     ]
     
     # encode plotly graphs in JSON

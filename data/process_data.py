@@ -1,5 +1,7 @@
 import sys
 import pandas as pd
+from sqlalchemy import create_engine
+
 pd.set_option('display.max_rows', 500)
 pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 1000)
@@ -34,10 +36,8 @@ def clean_data(df):
 
 def save_data(df, database_filepath):
     ''' save the clean dataset into an sqlite database'''
-    from sqlalchemy import create_engine
-    engine = create_engine('sqlite:///DisasterResponse.db')
+    engine = create_engine('sqlite:///'+database_filepath)
     df.to_sql("master", engine, index=False)
-    return database_filepath
 
 
 def main():

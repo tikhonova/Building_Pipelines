@@ -1,5 +1,8 @@
 ### Project Description
-<b>Goals</b>: 
+
+The goal os this project is to build a tool with easily understandable UI, which would allow people working in emergency centers quickly classify and prioritize incoming messages.
+
+<b>Technical goals</b>: 
 <ul>1. Analyze real messages that were sent during disaster events.</ul>
 <ul>2. Create the best fitting machine learning model and build a pipeline for an API that classifies disaster messages. </ul>
 <ul>3. Build a web interface that would allow User to input a new message and get classification results in several categories.</ul>
@@ -26,7 +29,7 @@
     1.1. Navigate to the <b>Data folder</b> and run the *process_data.py* script that cleans data and stores in database: <u>`python process_data.py "messages.csv" "categories.csv" "DisasterResponse.db"`</u>
 	The above command loads the datasets, fixes the data by resolving quality and tidiness issues, and loads the result into an SQLite database.
 		
-    1.2. <b>Copy .db file into the Models folder</b>, then run the *train_classifier.py* script within the Model folders, which trains classifier and saves it as a pickle file: <u>`python train_classifier.py DisasterResponse.db classifier.pkl`</u>
+    1.2. <b>Navigate to the Models folder</b> and run the *train_classifier.py* script within the Model folders, which trains classifier and saves it as a pickle file: <u>`python train_classifier.py DisasterResponse.db classifier.pkl`</u>
 	The second command builds and saves the model into a .pkl file. 
 	
 	1.3. For additional information, see the *ETL pipeline* and *ML pipeline* jupyter notebooks.
@@ -37,27 +40,28 @@
 	</br> result = loaded_model.score(X_test, y_test)
 	</br> print(result)
 	
-2. <b>Copy .pkl and .db files into the App folder</b> and run the following command in the app's directory to launch the *Web App*:<u>`python run.py`</u>. Access locally: http://localhost:3001/.
+2. <b>Navigate to the App folder</b> and run the following command in the app's directory to launch the *Web App*:<u>`python run.py`</u>. Access locally: http://localhost:3001/.
 
 ### Project Structure
 Project involving building an ETL Pipeline, ML Pipeline as well as a simple Flask Web App.
-- app
-| - template
-| |- master.html  # main page of web app
-| |- go.html  # classification result page of web app
-|- run.py  # Flask file that runs app
 
-- data
-|- disaster_categories.csv  # data to process 
-|- disaster_messages.csv  # data to process
-|- process_data.py
-|- InsertDatabaseName.db   # database to save clean data to
+<li>- app</li>
+<ul>| - template</ul>
+<ul>| |- master.html  # main page of web app</ul>
+<ul>| |- go.html  # classification result page of web app</ul>
+<ul>|- run.py  # Flask file that runs app</ul>
 
-- models
-|- train_classifier.py
-|- classifier.pkl  # saved model 
+<li>- data</li>
+<ul>|- disaster_categories.csv  # data to process </ul>
+<ul>|- disaster_messages.csv  # data to process </ul>
+<ul>|- process_data.py</ul>
+<ul>|- InsertDatabaseName.db   # database to save clean data to </ul>
 
-- README.md
+<li>- models</li>
+<ul>|- train_classifier.py </ul>
+<ul>|- classifier.pkl  # saved model </ul> 
+
+<li>- README.md</li>
 
 ### App screenshots
 

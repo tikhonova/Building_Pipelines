@@ -1,6 +1,6 @@
 ### Project Description
 
-The goal os this project is to build a tool with easily understandable UI, which would allow people working in emergency centers quickly classify and prioritize incoming messages.
+The goal of this project is to build a tool with easily understandable UI, which would allow people working in emergency centers quickly classify and prioritize incoming messages.
 
 <b>Technical goals</b>: 
 <ul>1. Analyze real messages that were sent during disaster events.</ul>
